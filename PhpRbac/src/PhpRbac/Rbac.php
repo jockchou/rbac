@@ -13,12 +13,14 @@ use \Jf;
  */
 class Rbac
 {
-    public function __construct($unit_test = '')
+    public function __construct($unit_test, $path)
     {
-        if ((string) $unit_test === 'unit_test') {
-            require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
+        if ((string)$unit_test === 'development') {
+            require $path . '/config/development/rbac.php';
+        } elseif ((string)$unit_test === 'testing') {
+            require $path . '/config/testing/rbac.php';
         } else {
-            require_once dirname(dirname(__DIR__)) . '/database/database.config';
+            require $path . '/config/rbac.php';
         }
 
         require_once 'core/lib/Jf.php';
