@@ -4,7 +4,8 @@
 if ($adapter=="pdo_mysql")
 {
 	try {
-		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname};port={$port}",$user,$pass);
+
+		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname};port={$port}",$user,$pass,array(PDO::ATTR_AUTOCOMMIT => 1));
 	}
 	catch (PDOException $e)
 	{
@@ -19,12 +20,13 @@ elseif ($adapter=="pdo_sqlite")
 	if (!file_exists($dbname))
 		installPdoSqlite($host,$user,$pass,$dbname);
 	else
-		Jf::$Db=new PDO("sqlite:{$dbname}",$user,$pass);
+		Jf::$Db=new PDO("sqlite:{$dbname}",$user,$pass,array(PDO::ATTR_AUTOCOMMIT => 1));
 // 		Jf::$Db=new PDO("sqlite::memory:",$user,$pass);
 }
 else # default to mysqli
 {
 	@Jf::$Db=new mysqli($host,$user,$pass,$dbname);
+    @Jf::$Db->autocommit(TRUE);
 	if(jf::$Db->connect_errno==1049)
 		installMysqli($host,$user,$pass,$dbname);
 }
