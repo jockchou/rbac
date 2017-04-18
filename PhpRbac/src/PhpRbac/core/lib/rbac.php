@@ -519,19 +519,19 @@ class RbacManager extends JModel
 
     /**
      *
-     * @var \Jf\PermissionManager
+     * @var \PermissionManager
      */
     public $Permissions;
 
     /**
      *
-     * @var \Jf\RoleManager
+     * @var \RoleManager
      */
     public $Roles;
 
     /**
      *
-     * @var \Jf\RbacUserManager
+     * @var \RbacUserManager
      */
     public $Users;
 

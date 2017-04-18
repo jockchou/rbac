@@ -111,6 +111,7 @@ class BaseNestedSet implements NestedSetInterface
         $Parent=$this->parentNode($ID);
         $Siblings=$this->children($Parent[$this->id()]);
         if (!$Siblings) return null;
+        $n=0;
         foreach ($Siblings as &$Sibling)
         {
             if ($Sibling[$this->id()]==$ID) break;

@@ -4,8 +4,11 @@
 if ($adapter=="pdo_mysql")
 {
 	try {
-
-		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname};port={$port}",$user,$pass,array(PDO::ATTR_AUTOCOMMIT => 1));
+        $dbOptions = array(
+            PDO::ATTR_AUTOCOMMIT => 1,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET @@SESSION.sql_mode='NO_AUTO_VALUE_ON_ZERO,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'",
+        );
+        Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname};port={$port}",$user,$pass,$dbOptions);
 	}
 	catch (PDOException $e)
 	{

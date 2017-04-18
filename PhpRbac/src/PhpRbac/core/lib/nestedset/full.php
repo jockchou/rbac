@@ -127,6 +127,7 @@ class FullNestedSet extends BaseNestedSet implements ExtendedNestedSet
         $Siblings=$this->children($Parent[$this->id()]);
         if (!$Siblings) return null;
         $ID=call_user_func_array(array($this,"getID"),$Arguments);
+        $n=0;
         foreach ($Siblings as &$Sibling)
         {
             if ($Sibling[$this->id()]==$ID) break;
