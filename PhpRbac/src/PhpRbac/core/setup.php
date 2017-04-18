@@ -4,7 +4,7 @@
 if ($adapter=="pdo_mysql")
 {
 	try {
-		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
+		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname};port={$port}",$user,$pass);
 	}
 	catch (PDOException $e)
 	{
